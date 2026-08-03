@@ -1,0 +1,39 @@
+.question-report-card {
+  width: 100%;
+  padding: 32px 0;
+  border-top: 1px solid #e2e8f0;
+}
+
+.question-report-card:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.question-heading {
+  margin: 0 0 24px;
+
+  color: #334155;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.question-options-container {
+  width: 100%;
+}
+
+@media screen and (max-width: 576px) {
+  .question-report-card {
+    padding: 24px 0;
+  }
+
+  .question-heading {
+    margin-bottom: 20px;
+    font-size: 22px;
+    line-height: 1.5;
+  }
+
+  .question-options-container {
+    width: 100%;
+  }
+}

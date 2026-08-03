@@ -1,0 +1,80 @@
+.report-single-select-list {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0;
+}
+
+.report-single-option-item {
+  margin-bottom: 18px;
+}
+
+.report-single-option-item:last-child {
+  margin-bottom: 0;
+}
+
+.report-single-option-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.report-option-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  flex: 1;
+
+  color: #334155;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.report-radio-input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  flex-shrink: 0;
+  cursor: default;
+}
+
+.report-single-icon-container {
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-shrink: 0;
+}
+
+.report-single-correct-icon {
+  width: 22px;
+  height: 22px;
+  color: #16a34a;
+}
+
+@media screen and (max-width: 576px) {
+  .report-option-label {
+    font-size: 16px;
+    gap: 10px;
+  }
+
+  .report-radio-input {
+    width: 16px;
+    height: 16px;
+  }
+
+  .report-single-icon-container {
+    width: 24px;
+    height: 24px;
+  }
+
+  .report-single-correct-icon {
+    width: 18px;
+    height: 18px;
+  }
+}

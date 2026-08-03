@@ -1,0 +1,154 @@
+.game-results-container {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 32px;
+  background: linear-gradient(
+    91.08deg,
+    #dbbcc4 9.68%,
+    #f3dfd8 32.98%,
+    #d8bfd0 75.7%,
+    #b7b1d5 99.11%
+  );
+}
+
+.results-card {
+  width: 100%;
+  max-width: 1250px;
+  min-height: 650px;
+  border-radius: 20px;
+  background: #f8fafc;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 48px 32px;
+}
+
+.passed-results-card {
+  background-image: url('https://res.cloudinary.com/ds3qgsy6r/image/upload/v1785347905/Frame_8769_nuijsc.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.failed-results-card {
+  background: #f8fafc;
+}
+
+.trophy-image {
+  width: 170px;
+  margin-bottom: 28px;
+}
+
+.failure-image {
+  width: 260px;
+  margin-bottom: 28px;
+}
+
+.result-title {
+  margin: 0;
+  color: #334155;
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.result-percentage {
+  margin: 18px 0 24px;
+  color: #0ea5e9;
+  font-size: 44px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.result-description {
+  margin: 0 0 24px;
+  color: #64748b;
+  font-size: 18px;
+  text-align: center;
+}
+
+.attempts-text {
+  margin: 0;
+  max-width: 420px;
+  color: #64748b;
+  font-size: 22px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.report-button {
+  margin-top: 36px;
+  width: 138px;
+  height: 48px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #0ea5e9;
+  color: #ffffff;
+
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 576px) {
+  .game-results-container {
+    padding: 16px;
+    height: 100%;
+    min-height: 576px;
+  }
+
+  .results-card {
+    min-height: calc(100vh - 96px);
+    padding: 28px 20px;
+    justify-content: center;
+  }
+
+  .failure-image {
+    height: 141.52px;
+    width: 189px;
+    margin-bottom: 24px;
+  }
+
+  .trophy-image {
+    width: 140px;
+    margin-bottom: 24px;
+  }
+
+  .result-title {
+    font-size: 26px;
+  }
+
+  .result-percentage {
+    margin: 16px 0;
+    color: #0ea5e9;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  .result-description {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+
+  .attempts-text {
+    max-width: 260px;
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .report-button {
+    width: 122px;
+    height: 40px;
+    margin-top: 28px;
+    font-size: 16px;
+  }
+}

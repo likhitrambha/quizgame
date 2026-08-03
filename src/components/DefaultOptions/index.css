@@ -1,0 +1,111 @@
+.default-options-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 28px;
+}
+
+.default-option-item {
+  width: 100%;
+}
+
+.default-option-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 12px;
+}
+
+.default-option-button {
+  flex: 1;
+  min-height: 56px;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #e8eef7;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.default-option-button:hover:not(:disabled) {
+  background-color: #dbe7f5;
+}
+
+.default-option-button:disabled {
+  cursor: default;
+}
+
+.default-option-text {
+  color: #334155;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.default-active-option {
+  background-color: #cce5ff;
+  border: 2px solid #0ea5e9;
+}
+
+.default-correct-option {
+  background-color: #d2f4ea;
+  border: 2px solid #10b981;
+}
+
+.default-wrong-option {
+  background-color: #fde8e8;
+  border: 2px solid #ef4444;
+}
+
+.default-icon-container {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.default-status-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.default-correct-icon {
+  color: #10b981;
+}
+
+.default-wrong-icon {
+  color: #ef4444;
+}
+
+@media screen and (max-width: 576px) {
+  .default-options-list {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .default-option-button {
+    min-height: 48px;
+    padding: 12px 16px;
+  }
+
+  .default-option-text {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .default-icon-container {
+    width: 28px;
+    height: 28px;
+  }
+
+  .default-status-icon {
+    width: 20px;
+    height: 20px;
+  }
+}

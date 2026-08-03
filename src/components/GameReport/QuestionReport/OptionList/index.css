@@ -1,0 +1,82 @@
+.report-options-list {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.report-option-item {
+  width: 100%;
+}
+
+.report-option-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.report-default-option,
+.report-correct-option {
+  flex: 1;
+  height: 48px;
+  border: none;
+  border-radius: 8px;
+  padding: 0 16px;
+
+  text-align: left;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.report-default-option {
+  background: #cbd5e1;
+  color: #334155;
+}
+
+.report-correct-option {
+  background: #16a34a;
+  color: #ffffff;
+}
+
+.report-icon-container {
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-shrink: 0;
+}
+
+.report-correct-icon {
+  color: #16a34a;
+  width: 22px;
+  height: 22px;
+}
+
+@media screen and (max-width: 576px) {
+  .report-options-list {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .report-default-option,
+  .report-correct-option {
+    height: 44px;
+    font-size: 15px;
+  }
+
+  .report-icon-container {
+    width: 24px;
+    height: 24px;
+  }
+
+  .report-correct-icon {
+    width: 18px;
+    height: 18px;
+  }
+}

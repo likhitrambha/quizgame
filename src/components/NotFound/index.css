@@ -1,0 +1,63 @@
+.not-found-container {
+  min-height: calc(100vh - 72px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.not-found-card {
+  width: 100%;
+  max-width: 1250px;
+  min-height: 650px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 48px;
+}
+
+.not-found-image {
+  width: 340px;
+  margin-bottom: 32px;
+}
+
+.not-found-heading {
+  margin: 0;
+  color: #334155;
+  font-size: 44px;
+  font-weight: 600;
+}
+
+.not-found-description {
+  margin-top: 16px;
+  max-width: 420px;
+  color: #64748b;
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+@media screen and (max-width: 768px) {
+  .not-found-container {
+    padding: 16px;
+  }
+
+  .not-found-card {
+    padding: 24px;
+    min-height: auto;
+  }
+
+  .not-found-image {
+    width: 260px;
+  }
+
+  .not-found-heading {
+    font-size: 30px;
+  }
+
+  .not-found-description {
+    font-size: 16px;
+  }
+}

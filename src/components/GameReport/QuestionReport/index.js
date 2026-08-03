@@ -1,0 +1,37 @@
+import OptionList from './OptionList'
+import ImageOptionList from './ImageOptionList'
+import SingleSelectList from './SingleSelectList'
+
+import './index.css'
+
+const QuestionReport = props => {
+  const {question, index} = props
+
+  const renderOptions = () => {
+    switch (question.options_type) {
+      case 'DEFAULT':
+        return <OptionList options={question.options} />
+
+      case 'IMAGE':
+        return <ImageOptionList options={question.options} />
+
+      case 'SINGLE_SELECT':
+        return <SingleSelectList options={question.options} />
+
+      default:
+        return null
+    }
+  }
+
+  return (
+    <div className="question-report-card">
+      <h2 className="question-heading">
+        {index + 1}. {question.question_text}
+      </h2>
+
+      <div className="question-options-container">{renderOptions()}</div>
+    </div>
+  )
+}
+
+export default QuestionReport
