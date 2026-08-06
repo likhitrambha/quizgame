@@ -1,4 +1,5 @@
 import {Component} from 'react'
+import Cookies from 'js-cookie'
 
 import Header from '../Header'
 import LoadingView from '../Loader'
@@ -20,6 +21,7 @@ class QuizGame extends Component {
   state = {
     apiStatus: apiStatusConstants.initial,
     questions: [],
+    totalQuestions: 0,
     currentQuestionIndex: 0,
     selectedOptionId: '',
     answers: [],
@@ -66,7 +68,13 @@ class QuizGame extends Component {
     try {
       const url = 'https://apis.ccbp.in/assess/questions'
 
-      const response = await fetch(url)
+      const jwtToken = Cookies.get('jwt_token')
+
+      const response = await fetch(url, {
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
+        },
+      })
 
       if (response.ok) {
         const data = await response.json()
@@ -74,6 +82,7 @@ class QuizGame extends Component {
         this.setState(
           {
             questions: data.questions,
+            totalQuestions: data.total,
             apiStatus: apiStatusConstants.success,
           },
           this.startTimer,
@@ -92,13 +101,8 @@ class QuizGame extends Component {
 
   onSelectOption = id => {
     this.stopTimer()
-    const {
-      selectedOptionId,
-      questions,
-      currentQuestionIndex,
-      answers,
-      score,
-    } = this.state
+    const {selectedOptionId, questions, currentQuestionIndex, answers, score} =
+      this.state
 
     if (selectedOptionId !== '') {
       return
@@ -128,23 +132,39 @@ class QuizGame extends Component {
 
   onClickNext = () => {
     this.stopTimer()
-    const {questions, currentQuestionIndex, answers, score} = this.state
+
+    const {questions, currentQuestionIndex, answers, score, selectedOptionId} =
+      this.state
 
     const {history} = this.props
     const {setQuestions, setAnswers, setScore} = this.context
 
+    let updatedAnswers = answers
+
+    if (selectedOptionId === '') {
+      updatedAnswers = [
+        ...answers,
+        {
+          questionId: questions[currentQuestionIndex].id,
+          selectedOptionId: '',
+          isCorrect: false,
+        },
+      ]
+    }
+
     if (currentQuestionIndex < questions.length - 1) {
       this.setState(
-        prevState => ({
-          currentQuestionIndex: prevState.currentQuestionIndex + 1,
+        {
+          currentQuestionIndex: currentQuestionIndex + 1,
           selectedOptionId: '',
+          answers: updatedAnswers,
           timer: 15,
-        }),
+        },
         this.startTimer,
       )
     } else {
       setQuestions(questions)
-      setAnswers(answers)
+      setAnswers(updatedAnswers)
       setScore(score)
 
       history.replace('/game-results')
@@ -184,9 +204,13 @@ class QuizGame extends Component {
   )
 
   renderSuccessView = () => {
-    const {questions, timer} = this.state
-
-    const {currentQuestionIndex, selectedOptionId} = this.state
+    const {
+      questions,
+      totalQuestions,
+      timer,
+      currentQuestionIndex,
+      selectedOptionId,
+    } = this.state
 
     const currentQuestion = questions[currentQuestionIndex]
     const {options_type: optionsType} = currentQuestion
@@ -198,7 +222,7 @@ class QuizGame extends Component {
             <p className="badge-title">Question</p>
 
             <p className="badge-count">
-              {currentQuestionIndex + 1}/{questions.length}
+              {currentQuestionIndex + 1}/{totalQuestions}
             </p>
           </div>
 

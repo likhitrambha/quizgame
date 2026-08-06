@@ -13,7 +13,7 @@
     "@testing-library/user-event": "12.6.2",
     "build": "0.1.4",
     "chalk": "4.1.0",
-    "history": "5.0.1",
+    "history": "4.10.1",
     "js-cookie": "3.0.1",
     "msw": "0.39.2",
     "react": "17.0.1",
