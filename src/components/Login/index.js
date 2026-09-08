@@ -1,6 +1,6 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
-import {Redirect} from 'react-router-dom'
+import {Redirect, withRouter} from 'react-router-dom'
 
 import './index.css'
 
@@ -14,11 +14,15 @@ class Login extends Component {
   }
 
   onChangeUsername = event => {
-    this.setState({username: event.target.value})
+    this.setState({
+      username: event.target.value,
+    })
   }
 
   onChangePassword = event => {
-    this.setState({password: event.target.value})
+    this.setState({
+      password: event.target.value,
+    })
   }
 
   onChangeShowPassword = () => {
@@ -29,12 +33,6 @@ class Login extends Component {
 
   onSubmitSuccess = jwtToken => {
     Cookies.set('jwt_token', jwtToken, {expires: 30})
-
-    this.setState({
-      showError: false,
-      errorMsg: '',
-    })
-
     const {history} = this.props
     history.replace('/')
   }
@@ -70,13 +68,17 @@ class Login extends Component {
     }
   }
 
-  render() {
+  componentDidMount() {
     const jwtToken = Cookies.get('jwt_token')
-
     if (jwtToken !== undefined) {
-      return <Redirect to="/" />
+      const {history} = this.props
+      if (history.location.pathname === '/login') {
+        history.replace('/')
+      }
     }
+  }
 
+  render() {
     const {username, password, showPassword, showError, errorMsg} = this.state
 
     return (
@@ -96,9 +98,7 @@ class Login extends Component {
 
               <input
                 id="username"
-                name="username"
                 type="text"
-                placeholder="Username"
                 className="input-field"
                 value={username}
                 onChange={this.onChangeUsername}
@@ -112,9 +112,7 @@ class Login extends Component {
 
               <input
                 id="password"
-                name="password"
                 type={showPassword ? 'text' : 'password'}
-                placeholder="Password"
                 className="input-field"
                 value={password}
                 onChange={this.onChangePassword}
@@ -146,4 +144,4 @@ class Login extends Component {
   }
 }
 
-export default Login
+export default withRouter(Login)

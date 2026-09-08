@@ -30,7 +30,7 @@ const ScoreSummary = props => {
 
         <p className="summary-item">
           <BsCircleFill className="summary-icon unattempted-icon" />
-          {unattempted} Unattempted answers
+          {unattempted} Unattempted
         </p>
       </div>
     </div>

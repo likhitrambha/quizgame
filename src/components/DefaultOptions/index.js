@@ -36,7 +36,7 @@ const DefaultOptions = props => {
                 onClick={() => onSelectOption(option.id)}
                 disabled={isAnswered}
               >
-                {optionLetter}. {option.text}
+                {option.text}
               </button>
 
               <div className="default-icon-container">{icon}</div>

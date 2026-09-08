@@ -9,9 +9,7 @@ import './index.css'
 const GameResults = () => {
   const history = useHistory()
 
-  const {questions, score} = useContext(QuizContext)
-
-  const totalQuestions = questions.length
+  const {score, totalQuestions} = useContext(QuizContext)
 
   const percentage =
     totalQuestions > 0 ? Math.round((score / totalQuestions) * 100) : 0

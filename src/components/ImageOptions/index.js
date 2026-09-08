@@ -15,12 +15,18 @@ const ImageOptions = props => {
           if (option.is_correct === 'true') {
             buttonClassName += ' quiz-image-correct-option'
             icon = (
-              <BsCheckCircleFill className="quiz-image-status-icon quiz-image-correct-icon" />
+              <img
+                src="https://assets.ccbp.in/frontend/react-js/quiz-game-check-circle-img.png"
+                className="quiz-image-status-icon quiz-image-correct-icon"
+              />
             )
           } else if (selectedOptionId === option.id) {
             buttonClassName += ' quiz-image-wrong-option'
             icon = (
-              <BsXCircleFill className="quiz-image-status-icon quiz-image-wrong-icon" />
+              <img
+                src="https://assets.ccbp.in/frontend/react-js/quiz-game-close-circle-img.png"
+                className="quiz-image-status-icon quiz-image-wrong-icon"
+              />
             )
           }
         } else if (selectedOptionId === option.id) {

@@ -1,8 +1,7 @@
 import {useState} from 'react'
-import {Router, Switch, Route} from 'react-router-dom'
+import {BrowserRouter, Switch, Route} from 'react-router-dom'
 
 import QuizContext from './Context/QuizContext'
-import history from './history'
 import Login from './components/Login'
 import Home from './components/Home'
 import QuizGame from './components/QuizGame'
@@ -15,12 +14,15 @@ import './App.css'
 
 const App = () => {
   const [questions, setQuestions] = useState([])
+  const [totalQuestions, setTotalQuestions] = useState(0)
   const [answers, setAnswers] = useState([])
   const [score, setScore] = useState(0)
 
   const contextValue = {
     questions,
     setQuestions,
+    totalQuestions,
+    setTotalQuestions,
     answers,
     setAnswers,
     score,
@@ -29,7 +31,7 @@ const App = () => {
 
   return (
     <QuizContext.Provider value={contextValue}>
-      <Router history={history}>
+      <BrowserRouter>
         <Switch>
           <Route exact path="/login" component={Login} />
 
@@ -43,7 +45,7 @@ const App = () => {
 
           <Route component={NotFound} />
         </Switch>
-      </Router>
+      </BrowserRouter>
     </QuizContext.Provider>
   )
 }

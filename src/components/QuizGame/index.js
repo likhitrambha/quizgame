@@ -63,6 +63,11 @@ class QuizGame extends Component {
   getQuestions = async () => {
     this.setState({
       apiStatus: apiStatusConstants.loading,
+      currentQuestionIndex: 0,
+      selectedOptionId: '',
+      answers: [],
+      score: 0,
+      timer: 15,
     })
 
     try {
@@ -82,7 +87,7 @@ class QuizGame extends Component {
         this.setState(
           {
             questions: data.questions,
-            totalQuestions: data.total,
+            totalQuestions: data.questions.length,
             apiStatus: apiStatusConstants.success,
           },
           this.startTimer,
@@ -133,11 +138,18 @@ class QuizGame extends Component {
   onClickNext = () => {
     this.stopTimer()
 
-    const {questions, currentQuestionIndex, answers, score, selectedOptionId} =
-      this.state
+    const {
+      questions,
+      totalQuestions,
+      currentQuestionIndex,
+      answers,
+      score,
+      selectedOptionId,
+    } = this.state
 
     const {history} = this.props
-    const {setQuestions, setAnswers, setScore} = this.context
+
+    const {setQuestions, setTotalQuestions, setAnswers, setScore} = this.context
 
     let updatedAnswers = answers
 
@@ -164,6 +176,7 @@ class QuizGame extends Component {
       )
     } else {
       setQuestions(questions)
+      setTotalQuestions(totalQuestions)
       setAnswers(updatedAnswers)
       setScore(score)
 

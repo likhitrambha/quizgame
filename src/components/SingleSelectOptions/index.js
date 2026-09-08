@@ -1,5 +1,3 @@
-import {BsCheckCircleFill, BsXCircleFill} from 'react-icons/bs'
-
 import './index.css'
 
 const SingleSelectOptions = props => {
@@ -12,9 +10,19 @@ const SingleSelectOptions = props => {
 
         if (isAnswered) {
           if (option.is_correct === 'true') {
-            icon = <BsCheckCircleFill className="status-icon correct-icon" />
+            icon = (
+              <img
+                src="https://assets.ccbp.in/frontend/react-js/quiz-game-check-circle-img.png"
+                className="status-icon correct-icon"
+              />
+            )
           } else if (selectedOptionId === option.id) {
-            icon = <BsXCircleFill className="status-icon wrong-icon" />
+            icon = (
+              <img
+                src="https://assets.ccbp.in/frontend/react-js/quiz-game-close-circle-img.png"
+                className="status-icon wrong-icon"
+              />
+            )
           }
         }
 

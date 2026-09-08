@@ -25,11 +25,13 @@ const QuestionReport = props => {
 
   return (
     <div className="question-report-card">
-      <h2 className="question-heading">
-        {index + 1}. {question.question_text}
-      </h2>
+      <h2 className="question-heading">{question.question_text}</h2>
 
-      <div className="question-options-container">{renderOptions()}</div>
+      <div className="question-options-container">
+        <ul>
+          <li>{renderOptions()}</li>
+        </ul>
+      </div>
     </div>
   )
 }
