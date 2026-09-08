@@ -1,6 +1,6 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
-import {Redirect, withRouter} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 
 import './index.css'
 
@@ -11,6 +11,16 @@ class Login extends Component {
     showPassword: false,
     showError: false,
     errorMsg: '',
+  }
+
+  componentDidMount() {
+    const jwtToken = Cookies.get('jwt_token')
+    if (jwtToken !== undefined) {
+      const {history} = this.props
+      if (history.location.pathname === '/login') {
+        history.replace('/')
+      }
+    }
   }
 
   onChangeUsername = event => {
@@ -65,16 +75,6 @@ class Login extends Component {
       this.onSubmitSuccess(data.jwt_token)
     } else {
       this.onSubmitFailure(data.error_msg)
-    }
-  }
-
-  componentDidMount() {
-    const jwtToken = Cookies.get('jwt_token')
-    if (jwtToken !== undefined) {
-      const {history} = this.props
-      if (history.location.pathname === '/login') {
-        history.replace('/')
-      }
     }
   }
 

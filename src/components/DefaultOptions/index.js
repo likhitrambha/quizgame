@@ -1,5 +1,3 @@
-import {BsCheckCircleFill, BsXCircleFill} from 'react-icons/bs'
-
 import './index.css'
 
 const DefaultOptions = props => {
@@ -7,9 +5,7 @@ const DefaultOptions = props => {
 
   return (
     <ul className="default-options-list">
-      {options.map((option, index) => {
-        const optionLetter = String.fromCharCode(65 + index)
-
+      {options.map(option => {
         let buttonClassName = 'default-option-button'
         let icon = null
 
@@ -17,12 +13,20 @@ const DefaultOptions = props => {
           if (option.is_correct === 'true') {
             buttonClassName += ' default-correct-option'
             icon = (
-              <BsCheckCircleFill className="default-status-icon default-correct-icon" />
+              <img
+                src="https://assets.ccbp.in/frontend/react-js/quiz-game-check-circle-img.png"
+                className="status-icon correct-icon"
+                alt="correct checked circle"
+              />
             )
           } else if (selectedOptionId === option.id) {
             buttonClassName += ' default-wrong-option'
             icon = (
-              <BsXCircleFill className="default-status-icon default-wrong-icon" />
+              <img
+                src="https://assets.ccbp.in/frontend/react-js/quiz-game-close-circle-img.png"
+                className="status-icon wrong-icon"
+                alt="incorrect close circle"
+              />
             )
           }
         }

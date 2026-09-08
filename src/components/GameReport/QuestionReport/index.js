@@ -5,7 +5,7 @@ import SingleSelectList from './SingleSelectList'
 import './index.css'
 
 const QuestionReport = props => {
-  const {question, index} = props
+  const {question} = props
 
   const renderOptions = () => {
     switch (question.options_type) {

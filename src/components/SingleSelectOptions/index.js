@@ -14,6 +14,7 @@ const SingleSelectOptions = props => {
               <img
                 src="https://assets.ccbp.in/frontend/react-js/quiz-game-check-circle-img.png"
                 className="status-icon correct-icon"
+                alt="correct checked circle"
               />
             )
           } else if (selectedOptionId === option.id) {
@@ -21,6 +22,7 @@ const SingleSelectOptions = props => {
               <img
                 src="https://assets.ccbp.in/frontend/react-js/quiz-game-close-circle-img.png"
                 className="status-icon wrong-icon"
+                alt="incorrect close circle"
               />
             )
           }

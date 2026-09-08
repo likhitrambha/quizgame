@@ -1,5 +1,3 @@
-import {BsCheckCircleFill} from 'react-icons/bs'
-
 import './index.css'
 
 const OptionList = props => {
@@ -25,7 +23,11 @@ const OptionList = props => {
 
               <div className="report-icon-container">
                 {isCorrect && (
-                  <BsCheckCircleFill className="report-correct-icon" />
+                  <img
+                    src="https://assets.ccbp.in/frontend/react-js/quiz-game-check-circle-img.png"
+                    className="status-icon correct-icon"
+                    alt="correct checked circle"
+                  />
                 )}
               </div>
             </div>

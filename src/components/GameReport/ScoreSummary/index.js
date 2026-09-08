@@ -2,18 +2,12 @@ import {BsCheckLg, BsXLg, BsCircleFill} from 'react-icons/bs'
 import './index.css'
 
 const ScoreSummary = props => {
-  const {
-    totalQuestions,
-    correctAnswers,
-    wrongAnswers,
-    attempted,
-    unattempted,
-  } = props
+  const {totalQuestions, correctAnswers, wrongAnswers, unattempted} = props
 
   return (
     <div className="score-summary-card">
       <div className="score-circle">
-        <span className="score-value">{attempted}</span>
+        <span className="score-value">{correctAnswers}</span>
         <span className="score-total">/{totalQuestions}</span>
       </div>
 
