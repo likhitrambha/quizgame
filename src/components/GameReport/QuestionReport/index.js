@@ -27,11 +27,7 @@ const QuestionReport = props => {
     <div className="question-report-card">
       <h2 className="question-heading">{question.question_text}</h2>
 
-      <div className="question-options-container">
-        <ul>
-          <li>{renderOptions()}</li>
-        </ul>
-      </div>
+      <div className="question-options-container">{renderOptions()}</div>
     </div>
   )
 }

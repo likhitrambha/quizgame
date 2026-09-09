@@ -20,8 +20,9 @@ const GameReport = () => {
 
   const wrongAnswers = attempted - correctAnswers
 
-  const unattempted = answers.filter(each => each.selectedOptionId === '')
-    .length
+  const unattempted = answers.filter(
+    each => each.selectedOptionId === '',
+  ).length
 
   const unattemptedQuestions = questions.filter(question => {
     const answer = answers.find(each => each.questionId === question.id)

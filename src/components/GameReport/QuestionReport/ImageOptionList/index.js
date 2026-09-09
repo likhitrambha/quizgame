@@ -6,7 +6,7 @@ const ImageOptionList = props => {
   return (
     <ul className="report-image-options-list">
       {options.map(option => {
-        const isCorrect = option.is_correct === 'true'
+        const isCorrect = option.is_correct === 'true' || option.is_correct === true
 
         return (
           <li key={option.id} className="report-image-option-item">

@@ -6,7 +6,8 @@ const SingleSelectList = props => {
   return (
     <ul className="report-single-select-list">
       {options.map(option => {
-        const isCorrect = option.is_correct === 'true'
+        const isCorrect =
+          option.is_correct === 'true' || option.is_correct === true
 
         return (
           <li key={option.id} className="report-single-option-item">

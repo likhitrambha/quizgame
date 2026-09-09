@@ -106,13 +106,8 @@ class QuizGame extends Component {
 
   onSelectOption = id => {
     this.stopTimer()
-    const {
-      selectedOptionId,
-      questions,
-      currentQuestionIndex,
-      answers,
-      score,
-    } = this.state
+    const {selectedOptionId, questions, currentQuestionIndex, answers, score} =
+      this.state
 
     if (selectedOptionId !== '') {
       return
