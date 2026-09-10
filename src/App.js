@@ -1,5 +1,6 @@
 import {useState} from 'react'
-import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom'
+import Cookies from 'js-cookie'
 
 import QuizContext from './Context/QuizContext'
 import Login from './components/Login'
@@ -33,7 +34,15 @@ const App = () => {
     <QuizContext.Provider value={contextValue}>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/login" component={Login} />
+          <Route
+            exact
+            path="/login"
+            render={() => {
+              const jwtToken = Cookies.get('jwt_token')
+
+              return jwtToken !== undefined ? <Redirect to="/" /> : <Login />
+            }}
+          />
 
           <ProtectedRoute exact path="/" component={Home} />
 

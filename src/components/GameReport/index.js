@@ -20,15 +20,13 @@ const GameReport = () => {
 
   const wrongAnswers = attempted - correctAnswers
 
-  const unattempted = answers.filter(
-    each => each.selectedOptionId === '',
-  ).length
-
   const unattemptedQuestions = questions.filter(question => {
     const answer = answers.find(each => each.questionId === question.id)
 
-    return answer && answer.selectedOptionId === ''
+    return !answer || answer.selectedOptionId === ''
   })
+
+  const unattempted = unattemptedQuestions.length
 
   return (
     <div className="game-report-bg-container">

@@ -13,15 +13,15 @@ class Login extends Component {
     errorMsg: '',
   }
 
-  componentDidMount() {
-    const jwtToken = Cookies.get('jwt_token')
-    if (jwtToken !== undefined) {
-      const {history} = this.props
-      if (history.location.pathname === '/login') {
-        history.replace('/')
-      }
-    }
-  }
+  // componentDidMount() {
+  //   const jwtToken = Cookies.get('jwt_token')
+  //   if (jwtToken !== undefined) {
+  //     const {history} = this.props
+  //     if (history.location.pathname === '/login') {
+  //       history.replace('/')
+  //     }
+  //   }
+  // }
 
   onChangeUsername = event => {
     this.setState({

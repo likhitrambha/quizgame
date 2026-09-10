@@ -1,7 +1,8 @@
 import './index.css'
 
 const SingleSelectList = props => {
-  const {options} = props
+  const {question} = props
+  const {options} = question
 
   return (
     <ul className="report-single-select-list">
