@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom'
+import {Switch, Route, Redirect} from 'react-router-dom'
 import Cookies from 'js-cookie'
 
 import QuizContext from './Context/QuizContext'
@@ -32,29 +32,27 @@ const App = () => {
 
   return (
     <QuizContext.Provider value={contextValue}>
-      <BrowserRouter>
-        <Switch>
-          <Route
-            exact
-            path="/login"
-            render={() => {
-              const jwtToken = Cookies.get('jwt_token')
+      <Switch>
+        <Route
+          exact
+          path="/login"
+          render={() => {
+            const jwtToken = Cookies.get('jwt_token')
 
-              return jwtToken !== undefined ? <Redirect to="/" /> : <Login />
-            }}
-          />
+            return jwtToken !== undefined ? <Redirect to="/" /> : <Login />
+          }}
+        />
 
-          <ProtectedRoute exact path="/" component={Home} />
+        <ProtectedRoute exact path="/" component={Home} />
 
-          <ProtectedRoute exact path="/quiz-game" component={QuizGame} />
+        <ProtectedRoute exact path="/quiz-game" component={QuizGame} />
 
-          <ProtectedRoute exact path="/game-results" component={GameResults} />
+        <ProtectedRoute exact path="/game-results" component={GameResults} />
 
-          <ProtectedRoute exact path="/game-report" component={GameReport} />
+        <ProtectedRoute exact path="/game-report" component={GameReport} />
 
-          <Route component={NotFound} />
-        </Switch>
-      </BrowserRouter>
+        <Route component={NotFound} />
+      </Switch>
     </QuizContext.Provider>
   )
 }

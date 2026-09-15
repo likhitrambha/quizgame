@@ -13,16 +13,6 @@ class Login extends Component {
     errorMsg: '',
   }
 
-  // componentDidMount() {
-  //   const jwtToken = Cookies.get('jwt_token')
-  //   if (jwtToken !== undefined) {
-  //     const {history} = this.props
-  //     if (history.location.pathname === '/login') {
-  //       history.replace('/')
-  //     }
-  //   }
-  // }
-
   onChangeUsername = event => {
     this.setState({
       username: event.target.value,
@@ -42,8 +32,8 @@ class Login extends Component {
   }
 
   onSubmitSuccess = jwtToken => {
-    Cookies.set('jwt_token', jwtToken, {expires: 30})
     const {history} = this.props
+    Cookies.set('jwt_token', jwtToken, {expires: 30})
     history.replace('/')
   }
 
