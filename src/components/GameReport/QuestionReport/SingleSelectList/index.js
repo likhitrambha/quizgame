@@ -5,39 +5,37 @@ const SingleSelectList = props => {
   const {options} = question
 
   return (
-    <ul className="report-single-select-list">
+    <>
       {options.map(option => {
         const isCorrect =
           option.is_correct === 'true' || option.is_correct === true
 
         return (
-          <li key={option.id} className="report-single-option-item">
-            <div className="report-single-option-wrapper">
-              <label className="report-option-label">
-                <input
-                  type="radio"
-                  disabled
-                  checked={isCorrect}
-                  readOnly
-                  className="report-radio-input"
+          <li key={option.id} className="option-container single-select">
+            <input
+              type="radio"
+              id={option.id}
+              name={`singleSelectOption-${question.id}`}
+              className="single-select-radio"
+              checked={isCorrect}
+              disabled
+              readOnly
+              aria-label={option.text}
+            />
+            <label htmlFor={option.id} className="single-select-label">
+              {option.text}
+              {isCorrect && (
+                <img
+                  className="option-icon"
+                  src="https://assets.ccbp.in/frontend/react-js/quiz-game-check-circle-img.png"
+                  alt="correct checked circle"
                 />
-                <span>{option.text}</span>
-              </label>
-
-              <div className="report-single-icon-container">
-                {isCorrect && (
-                  <img
-                    src="https://assets.ccbp.in/frontend/react-js/quiz-game-check-circle-img.png"
-                    className="status-icon correct-icon"
-                    alt="correct checked circle"
-                  />
-                )}
-              </div>
-            </div>
+              )}
+            </label>
           </li>
         )
       })}
-    </ul>
+    </>
   )
 }
 

@@ -22,7 +22,6 @@ const GameReport = () => {
 
   const unattemptedQuestions = questions.filter(question => {
     const answer = answers.find(each => each.questionId === question.id)
-
     return !answer || answer.selectedOptionId === ''
   })
 
@@ -36,7 +35,6 @@ const GameReport = () => {
         <h1 className="game-report-heading">Game Report</h1>
 
         <ScoreSummary
-          attempted={attempted}
           totalQuestions={totalQuestions}
           correctAnswers={correctAnswers}
           wrongAnswers={wrongAnswers}
@@ -46,13 +44,12 @@ const GameReport = () => {
         {unattempted === 0 ? (
           <h1 className="attempted-all-text">Attempted all the questions</h1>
         ) : (
-          <ul className="questions-container">
-            {unattemptedQuestions.map((question, index) => (
-              <li key={question.id}>
-                <QuestionReport question={question} index={index} />
-              </li>
+          <div className="unattempted-questions-container">
+            <h2>Unattempted Questions</h2>
+            {unattemptedQuestions.map(question => (
+              <QuestionReport key={question.id} question={question} />
             ))}
-          </ul>
+          </div>
         )}
       </div>
     </div>

@@ -5,38 +5,39 @@ const ImageOptionList = props => {
   const {options} = question
 
   return (
-    <ul className="report-image-options-list">
+    <>
       {options.map(option => {
         const isCorrect =
           option.is_correct === 'true' || option.is_correct === true
 
         return (
-          <li key={option.id} className="report-image-option-item">
-            <div className="report-image-option-wrapper">
+          <li
+            key={option.id}
+            className={`option-container ${isCorrect ? 'correct' : ''}`}
+          >
+            <button
+              type="button"
+              className={`option ${isCorrect ? 'correct' : ''}`}
+              aria-label={option.text}
+              disabled
+            >
               <img
                 src={option.image_url}
                 alt={option.text}
-                className={
-                  isCorrect
-                    ? 'report-correct-image'
-                    : 'report-image-option-image'
-                }
+                className="option-image"
               />
-
               {isCorrect && (
-                <div className="report-image-icon-container">
-                  <img
-                    src="https://assets.ccbp.in/frontend/react-js/quiz-game-check-circle-img.png"
-                    className="status-icon correct-icon"
-                    alt="correct checked circle"
-                  />
-                </div>
+                <img
+                  className="option-icon"
+                  src="https://assets.ccbp.in/frontend/react-js/quiz-game-check-circle-img.png"
+                  alt="correct checked circle"
+                />
               )}
-            </div>
+            </button>
           </li>
         )
       })}
-    </ul>
+    </>
   )
 }
 

@@ -1,4 +1,3 @@
-import {BsCheckLg, BsXLg, BsCircleFill} from 'react-icons/bs'
 import './index.css'
 
 const ScoreSummary = props => {
@@ -12,20 +11,32 @@ const ScoreSummary = props => {
       </div>
 
       <div className="score-details">
-        <p className="summary-item">
-          <BsCheckLg className="summary-icon correct-icon" />
-          {correctAnswers} Correct answers
-        </p>
+        <div className="score-item">
+          <img
+            src="https://assets.ccbp.in/frontend/react-js/quiz-game-right-check-img.png"
+            alt="correct answer icon"
+            className="score-icon"
+          />
+          <p className="count">{correctAnswers} Correct answers</p>
+        </div>
 
-        <p className="summary-item">
-          <BsXLg className="summary-icon wrong-icon" />
-          {wrongAnswers} Incorrect answers
-        </p>
+        <div className="score-item">
+          <img
+            src="https://assets.ccbp.in/frontend/react-js/quiz-game-wrong-check-img.png"
+            alt="incorrect answer icon"
+            className="score-icon"
+          />
+          <p className="count">{wrongAnswers} Incorrect answers</p>
+        </div>
 
-        <p className="summary-item">
-          <BsCircleFill className="summary-icon unattempted-icon" />
-          {unattempted} Unattempted
-        </p>
+        <div className="score-item">
+          <img
+            src="https://assets.ccbp.in/frontend/react-js/quiz-game-un-answered-img.png"
+            alt="unattempted questions icon"
+            className="score-icon"
+          />
+          <p className="count">{unattempted} Unattempted</p>
+        </div>
       </div>
     </div>
   )

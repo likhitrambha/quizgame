@@ -11,13 +11,10 @@ const QuestionReport = props => {
     switch (question.options_type) {
       case 'DEFAULT':
         return <OptionList question={question} />
-
       case 'IMAGE':
         return <ImageOptionList question={question} />
-
       case 'SINGLE_SELECT':
         return <SingleSelectList question={question} />
-
       default:
         return null
     }
@@ -25,9 +22,8 @@ const QuestionReport = props => {
 
   return (
     <div className="question-report-card">
-      <h2 className="question-heading">{question.question_text}</h2>
-
-      <div className="question-options-container">{renderOptions()}</div>
+      <h3>{question.question_text}</h3>
+      <ul className="options-container">{renderOptions()}</ul>
     </div>
   )
 }

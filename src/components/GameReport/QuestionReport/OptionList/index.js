@@ -5,38 +5,36 @@ const OptionList = props => {
   const {options} = question
 
   return (
-    <ul className="report-options-list">
-      {options.map(option => {
+    <>
+      {options.map((option, index) => {
         const isCorrect =
           option.is_correct === 'true' || option.is_correct === true
 
         return (
-          <li key={option.id} className="report-option-item">
-            <div className="report-option-wrapper">
-              <button
-                type="button"
-                className={
-                  isCorrect ? 'report-correct-option' : 'report-default-option'
-                }
-                disabled
-              >
-                {option.text}
-              </button>
-
-              <div className="report-icon-container">
-                {isCorrect && (
-                  <img
-                    src="https://assets.ccbp.in/frontend/react-js/quiz-game-check-circle-img.png"
-                    className="status-icon correct-icon"
-                    alt="correct checked circle"
-                  />
-                )}
-              </div>
-            </div>
+          <li
+            key={option.id}
+            className={`option-container ${isCorrect ? 'correct' : ''}`}
+          >
+            <span>{`${String.fromCharCode(65 + index)}. `}</span>
+            <button
+              type="button"
+              className={`option ${isCorrect ? 'correct' : ''}`}
+              aria-label={option.text}
+              disabled
+            >
+              {option.text}
+              {isCorrect && (
+                <img
+                  className="option-icon"
+                  src="https://assets.ccbp.in/frontend/react-js/quiz-game-check-circle-img.png"
+                  alt="correct checked circle"
+                />
+              )}
+            </button>
           </li>
         )
       })}
-    </ul>
+    </>
   )
 }
 
